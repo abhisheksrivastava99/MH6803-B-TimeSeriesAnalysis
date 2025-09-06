@@ -30,6 +30,8 @@ def main():
     # Use these dates in your Streamlit app:
     start_date = st.date_input("Start date", value=one_year_ago, min_value=one_year_ago)
     end_date = st.date_input("End date", value=today, max_value=today)
+    if (end_date - start_date).days < 365:
+        st.error("Please select a date range of at least one year between Start and End dates.")
 
 
     if st.button("Download Data"):
