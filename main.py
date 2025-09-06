@@ -23,8 +23,13 @@ def main():
         st.session_state['last_ticker'] = ticker
         st.info(f"Ticker changed to {ticker}. Resetting cached data.")
         
-    start_date = st.date_input("Start date")
-    end_date = st.date_input("End date")
+    today = datetime.today().date()
+    one_year_ago = today - timedelta(days=365)
+
+    # Use these dates in your Streamlit app:
+    start_date = st.date_input("Start date", value=one_year_ago, min_value=one_year_ago)
+    end_date = st.date_input("End date", value=today, max_value=today)
+
 
     if st.button("Download Data"):
         try:
