@@ -12,8 +12,31 @@ from src.analysis_utils import test_stationarity, plot_first_difference, plot_ac
 
 def main():
     st.title("Group 8- Time Series Analysis with Streamlit")
+        dict_df = pd.read_csv('dict_file.csv', header=None, names=['CompanyName', 'Ticker'])
+    
+    def search_ticker_by_company(query, df):
+        matches = df[df['CompanyName'].str.lower().str.contains(query.lower())]
+        return matches[['CompanyName', 'Ticker']].values.tolist()
+    
+    # Add input for company search
+    company_search = st.text_input("Search company name for ticker", "")
+    
+    if company_search:
+        options = search_ticker_by_company(company_search, dict_df)
+        if options:
+            # Show selectbox with company names and tickers
+            display_options = [f"{name} ({ticker})" for name, ticker in options]
+            selected = st.selectbox("Select desired company", display_options)
+            # Get ticker from selected option, prefill ticker
+            selected_ticker = options[display_options.index(selected)][1]
+            ticker = st.text_input("Ticker symbol", selected_ticker)
+        else:
+            st.warning("No matching company found!")
+            ticker = st.text_input("Ticker symbol", "")
+    else:
+        ticker = st.text_input("Ticker symbol", "^STI")
 
-    ticker = st.text_input("Ticker symbol", "^STI")
+    
     if 'last_ticker' not in st.session_state:
         st.session_state['last_ticker'] = None
 
