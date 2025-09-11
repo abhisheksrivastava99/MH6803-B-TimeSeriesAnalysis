@@ -12,7 +12,7 @@ from src.analysis_utils import test_stationarity, plot_first_difference, plot_ac
 
 def main():
     st.title("Group 8- Time Series Analysis with Streamlit")
-        dict_df = pd.read_csv('dict_file.csv', header=None, names=['CompanyName', 'Ticker'])
+    dict_df = pd.read_csv('dict_file.csv', header=None, names=['CompanyName', 'Ticker'])
     
     def search_ticker_by_company(query, df):
         matches = df[df['CompanyName'].str.lower().str.contains(query.lower())]
