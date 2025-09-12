@@ -59,8 +59,8 @@ def main():
     end_date = st.date_input("End date", value=today, max_value=today)
     
     # Business rule: require at least 1 year between start and end
-    #if (end_date - start_date).days < 365:
-    #    st.error("Please select a date range of at least one year between Start and End dates.")
+    if (end_date - start_date).days < 365:
+        st.error("Please select a date range of at least one year between Start and End dates.")
 
 
     if st.button("Download Data"):
