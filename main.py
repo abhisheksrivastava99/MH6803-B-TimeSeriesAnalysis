@@ -12,7 +12,7 @@ from src.data_utils import download_data_for_ticker, plot_close_prices ,plot_ope
 from src.analysis_utils import test_stationarity, plot_first_difference, plot_acf_pacf, seasonal_decompose_and_plot
 
 def main():
-    st.title("Group 8- Time Series Analysis with Streamlit")
+    st.title("Group 8- Time Series Analysis")
     dict_df = pd.read_csv('dict_file.csv', header=None, names=['CompanyName', 'Ticker'])
     
     def search_ticker_by_company(query, df):
