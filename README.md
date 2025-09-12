@@ -18,6 +18,7 @@ Download price data for any ticker, perform key transformations and generate sta
 
 ```.
 ├── main.py
+├── dict_file.csv
 ├── requirements.txt
 └── src/
     ├── __init__.py
