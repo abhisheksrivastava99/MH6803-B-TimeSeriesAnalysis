@@ -50,10 +50,15 @@ def main():
         
     today = datetime.today().date()
     one_year_ago = today - timedelta(days=365)
-
-    # Use these dates in your Streamlit app:
-    start_date = st.date_input("Start date", value=one_year_ago, min_value=one_year_ago)
+    
+    # Allow older start dates by NOT clamping min_value to one_year_ago
+    # Option A: no lower bound (recommended)
+    start_date = st.date_input("Start date", value=one_year_ago)
+    
+    # Keep end date capped at today
     end_date = st.date_input("End date", value=today, max_value=today)
+    
+    # Business rule: require at least 1 year between start and end
     if (end_date - start_date).days < 365:
         st.error("Please select a date range of at least one year between Start and End dates.")
 
