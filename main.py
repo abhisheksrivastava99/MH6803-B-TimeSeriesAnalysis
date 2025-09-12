@@ -2,13 +2,13 @@ import os
 import sys
 import streamlit as st
 from datetime import datetime, timedelta
-#import pandas as pd
+import pandas as pd
 
 # Add the project root directory to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
 
-#from src.data_utils import download_data_for_ticker, plot_close_prices ,plot_open_prices
+from src.data_utils import download_data_for_ticker, plot_close_prices ,plot_open_prices
 from src.analysis_utils import test_stationarity, plot_first_difference, plot_acf_pacf, seasonal_decompose_and_plot
 
 def main():
@@ -59,8 +59,8 @@ def main():
     end_date = st.date_input("End date", value=today, max_value=today)
     
     # Business rule: require at least 1 year between start and end
-    if (end_date - start_date).days < 365:
-        st.error("Please select a date range of at least one year between Start and End dates.")
+    #if (end_date - start_date).days < 365:
+    #    st.error("Please select a date range of at least one year between Start and End dates.")
 
 
     if st.button("Download Data"):
