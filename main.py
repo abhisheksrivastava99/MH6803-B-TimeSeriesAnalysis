@@ -8,7 +8,7 @@ import pandas as pd
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
 
-from src.data_utils import download_data_for_ticker, plot_close_prices ,plot_open_prices
+#from src.data_utils import download_data_for_ticker, plot_close_prices ,plot_open_prices
 from src.analysis_utils import test_stationarity, plot_first_difference, plot_acf_pacf, seasonal_decompose_and_plot
 
 def main():
